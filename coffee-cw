@@ -1,0 +1,1 @@
+coffee -cw lib/*.coffee lib/notification-server/*.coffee test/*.coffee

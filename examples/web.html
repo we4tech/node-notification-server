@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title></title>
+  <script type="text/javascript"
+          src="http://localhost:2212/nowjs/now.js"></script>
+
+</head>
+
+<body leftmargin="0" topmargin="0">
+<label>Enter your name</label>
+<input type='text' id="name"/>
+<input type='button' id='btn_reg' value='Register'/>
+<input type='button' id='btn_unreg' value='Unregister'/>
+
+<div id='content'>
+  <h1>Conversation</h1>
+</div>
+<input type='text' id='msg'/>
+<input type='button'
+       value='Send' id='btn_send'/>
+
+<input type='button' id='btn_count' value='Total Users'/>
+<script type="text/javascript">
+  console.log(now);
+  now.ready(function () {
+    now.receive = function (info, msg) {
+      var el = document.getElementById('content');
+      el.innerHTML = el.innerHTML + "<b>" + (info != null ? info.name : 'Annonym') + "</b>" +
+          " &raquo; " + msg + "<br/>";
+    };
+
+    document.getElementById('msg').addEventListener('keypress', function (e) {
+      if (e.keyCode == 13)
+        now.publish(document.getElementById('msg').value);
+    });
+
+    document.getElementById('btn_send').addEventListener('click', function (e) {
+      now.publish(document.getElementById('msg').value);
+    });
+
+    document.getElementById('name').addEventListener('keypress', function (e) {
+      if (e.keyCode == 13) {
+        now.register({name: document.getElementById('name').value});
+        alert('Registered - ' + now.uid + '_' + now.core.clientId);
+      }
+    });
+
+    document.getElementById('btn_reg').addEventListener('click', function (e) {
+      now.register({name: document.getElementById('name').value});
+      alert('Registered - ' + now.uid + '_' + now.core.clientId);
+    });
+
+    document.getElementById('btn_count').addEventListener('click', function(e) {
+      now.getTotalUsers(function(connectedUsersCount, regUsersCount) {
+        alert('Connected users - ' + connectedUsersCount + ' & Registered users - ' + regUsersCount);
+      });
+    });
+
+    document.getElementById('btn_unreg').addEventListener('click', function(e) {
+      now.unregister();
+    });
+  });
+
+</script>
+</body>
+</html>
