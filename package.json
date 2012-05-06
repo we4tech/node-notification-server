@@ -2,36 +2,31 @@
   "author": "nhm tanveer hossain khan <hasan@welltreat.us>",
   "name": "notification-server",
   "description": "Based on NowJS, a standalone server for sending and receiving notification across different live users",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "http://hasan.we4tech.com",
   "repository": {
     "type": "git",
     "url": "git://github.com/we4tech/node-notification-server.git"
   },
-
   "bin": {
     "notification-server": "./bin/notification-server.js"
   },
-
   "main": "./lib/notification-server.js",
-
   "scripts": {
     "test": "./bin/test"
   },
-
   "engines": {
     "node": ">=0.6.1"
   },
-
   "dependencies": {
     "now": ">=0.8.1",
     "optparse": ">=1.0.3"
   },
-
   "devDependencies": {
     "socket.io": ">= 0.8.7",
     "should": ">=0.4.2",
     "mocha": ">=0.9.0",
     "jscoverage": ">=0.1.1"
-  }
+  },
+  "optionalDependencies": {}
 }
