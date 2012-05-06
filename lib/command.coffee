@@ -38,8 +38,9 @@ class Processor
 
   run: ->
     @parser.parse(@argv)
+    console.log util.inspect(@config)
 
-    if @config.port == null
+    if typeof(@config.port) == 'undefined'
       util.puts @parser
     else
       @server = new core.NotificationServer(@config)
