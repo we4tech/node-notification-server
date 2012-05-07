@@ -38,7 +38,6 @@ class Processor
 
   run: ->
     @parser.parse(@argv)
-    console.log util.inspect(@config)
 
     if typeof(@config.port) == 'undefined'
       util.puts @parser
