@@ -1,6 +1,8 @@
 Node Notification Server
 ========================
 
+![Travis status](https://secure.travis-ci.org/we4tech/node-notification-server.png)
+
 Based on NowJS, a standalone server for sending and receiving notification across different live users.
 
 Purpose 
