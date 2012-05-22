@@ -5,7 +5,12 @@ VERSION = $(shell date +%Y%m%d%H%M%S)
 
 test:
 	@NODE_ENV=test ./node_modules/mocha/bin/mocha \
+		--reporter spec --timeout $(TESTTIMEOUT) $(TESTS)
+
+watch:
+	@NODE_ENV=test ./node_modules/mocha/bin/mocha \
 		-w --reporter spec --timeout $(TESTTIMEOUT) $(TESTS)
+
 
 cov:
 	@JSCOV=1 ./node_modules/mocha/bin/mocha \
